@@ -13,6 +13,15 @@ public class Clientes extends Pessoa {
         super(nome, telefone, endereco);
         this.cpfRg = cpfRg;
     }
+
+    public String getCpfRg() {
+        return cpfRg;
+    }
+
+    public void setCpfRg(String cpfRg) {
+        this.cpfRg = cpfRg;
+    }
+    
     
 
 

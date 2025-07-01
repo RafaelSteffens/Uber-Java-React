@@ -1,22 +1,16 @@
 package com.Uber.Uber.Entitys;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Chamados extends Corrida{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idChamados;
-    private String TipoChamado;
-    private double KmInicial;
-    private double KmFinal;
-    private String HrInicial;
-    private String HrFinal;
-    private double ValorCorrida;
+    private String tipoChamado;
+    private double kmInicial;
+    private double kmFinal;
+    private String hrInicial;
+    private String hrFinal;
+    private double valorCorrida;
 
     @ManyToOne
     private Veiculos veiculo;
@@ -26,88 +20,97 @@ public class Chamados extends Corrida{
 
     @ManyToOne
     private Clientes cliente;
-    
 
+    // public Chamados() { }
 
-    public Chamados(String origem, String destino, String data, String tipoChamado, double kmInicial, double kmFinal,
-            String hrInicial, String hrFinal, double valorCorrida, Veiculos idVeiculos, Motoristas idMotoristas,
-            Clientes idClientes) {
-        super(origem, destino, data);
-
-        TipoChamado = tipoChamado;
-        KmInicial = kmInicial;
-        KmFinal = kmFinal;
-        HrInicial = hrInicial;
-        HrFinal = hrFinal;
-        ValorCorrida = valorCorrida;
-        this.veiculo = idVeiculos;
-        this.motorista = idMotoristas;
-        this.cliente = idClientes;
-    }
-
-    
-    public Long getIdChamados() {
-        return idChamados;
-    }
-    public void setIdChamados(Long idChamados) {
-        this.idChamados = idChamados;
+    public Chamados(String origem, String destino, String data, String tipoServico, Long idCliente,
+                    String tipoChamado, double kmInicial, double kmFinal,
+                    String hrInicial, String hrFinal, double valorCorrida,
+                    Veiculos veiculo, Motoristas motorista, Clientes cliente) {
+        super(origem, destino, data, tipoServico, idCliente);
+        this.tipoChamado = tipoChamado;
+        this.kmInicial = kmInicial;
+        this.kmFinal = kmFinal;
+        this.hrInicial = hrInicial;
+        this.hrFinal = hrFinal;
+        this.valorCorrida = valorCorrida;
+        this.veiculo = veiculo;
+        this.motorista = motorista;
+        this.cliente = cliente;
     }
 
     public String getTipoChamado() {
-        return TipoChamado;
+        return tipoChamado;
     }
+
     public void setTipoChamado(String tipoChamado) {
-        TipoChamado = tipoChamado;
+        this.tipoChamado = tipoChamado;
     }
+
     public double getKmInicial() {
-        return KmInicial;
+        return kmInicial;
     }
+
     public void setKmInicial(double kmInicial) {
-        KmInicial = kmInicial;
+        this.kmInicial = kmInicial;
     }
+
     public double getKmFinal() {
-        return KmFinal;
+        return kmFinal;
     }
+
     public void setKmFinal(double kmFinal) {
-        KmFinal = kmFinal;
+        this.kmFinal = kmFinal;
     }
+
     public String getHrInicial() {
-        return HrInicial;
+        return hrInicial;
     }
+
     public void setHrInicial(String hrInicial) {
-        HrInicial = hrInicial;
+        this.hrInicial = hrInicial;
     }
+
     public String getHrFinal() {
-        return HrFinal;
+        return hrFinal;
     }
+
     public void setHrFinal(String hrFinal) {
-        HrFinal = hrFinal;
+        this.hrFinal = hrFinal;
     }
+
     public double getValorCorrida() {
-        return ValorCorrida;
+        return valorCorrida;
     }
+
     public void setValorCorrida(double valorCorrida) {
-        ValorCorrida = valorCorrida;
+        this.valorCorrida = valorCorrida;
     }
-    public Veiculos getIdVeiculos() {
+
+    public Veiculos getVeiculo() {
         return veiculo;
     }
-    public void setIdVeiculos(Veiculos idVeiculos) {
-        this.veiculo = idVeiculos;
+
+    public void setVeiculo(Veiculos veiculo) {
+        this.veiculo = veiculo;
     }
-    public Motoristas getIdMotoristas() {
+
+    public Motoristas getMotorista() {
         return motorista;
     }
-    public void setIdMotoristas(Motoristas idMotoristas) {
-        this.motorista = idMotoristas;
+
+    public void setMotorista(Motoristas motorista) {
+        this.motorista = motorista;
     }
-    public Clientes getIdClientes() {
+
+    public Clientes getCliente() {
         return cliente;
     }
-    public void setIdClientes(Clientes idClientes) {
-        this.cliente = idClientes;
+
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
     }
 
-    
 
+    
 }
