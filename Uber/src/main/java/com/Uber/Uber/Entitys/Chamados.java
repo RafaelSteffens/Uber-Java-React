@@ -5,7 +5,6 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Chamados extends Corrida{
-    private String tipoChamado;
     private double kmInicial;
     private double kmFinal;
     private String hrInicial;
@@ -28,7 +27,6 @@ public class Chamados extends Corrida{
                     String hrInicial, String hrFinal, double valorCorrida,
                     Veiculos veiculo, Motoristas motorista, Clientes cliente) {
         super(origem, destino, data, tipoServico, idCliente);
-        this.tipoChamado = tipoChamado;
         this.kmInicial = kmInicial;
         this.kmFinal = kmFinal;
         this.hrInicial = hrInicial;
@@ -39,13 +37,6 @@ public class Chamados extends Corrida{
         this.cliente = cliente;
     }
 
-    public String getTipoChamado() {
-        return tipoChamado;
-    }
-
-    public void setTipoChamado(String tipoChamado) {
-        this.tipoChamado = tipoChamado;
-    }
 
     public double getKmInicial() {
         return kmInicial;

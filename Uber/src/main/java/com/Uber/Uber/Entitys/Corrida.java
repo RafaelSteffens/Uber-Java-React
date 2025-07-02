@@ -1,5 +1,6 @@
 package com.Uber.Uber.Entitys;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +12,9 @@ import jakarta.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) 
 public class Corrida {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCorrida;
@@ -29,6 +33,9 @@ public class Corrida {
         this.tipoServico = tipoServico;
         this.idCliente = idCliente;
     }
+
+    
+
 
     public Long getIdCorrida() {
         return idCorrida;
