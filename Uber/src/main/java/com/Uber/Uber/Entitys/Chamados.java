@@ -23,7 +23,7 @@ public class Chamados extends Corrida{
     // public Chamados() { }
 
     public Chamados(String origem, String destino, String data, String tipoServico, Long idCliente,
-                    String tipoChamado, double kmInicial, double kmFinal,
+                    double kmInicial, double kmFinal,
                     String hrInicial, String hrFinal, double valorCorrida,
                     Veiculos veiculo, Motoristas motorista, Clientes cliente) {
         super(origem, destino, data, tipoServico, idCliente);
