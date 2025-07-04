@@ -1,6 +1,5 @@
 package com.Uber.Uber.Controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,27 +78,19 @@ public class CreateChamados {
 
         corridaRepository.save(newCorrida);
         
-        return ResponseEntity.ok("Corrida Cadastradaa com sucesso");
+        return ResponseEntity.ok("Corrida Cadastrada com sucesso");
     }
 
     
     @GetMapping("/consultaCorrida")
     public List<Corrida> consultaCorrida() {
+        // System.out.println("=====================================================================================================================================");
+        // System.out.println("                           PASSOU POR AQUI                   corridaRepository.findAll()");
+        // List<Corrida> allCorrida = corridaRepository.findAll();
+        // System.out.println(allCorrida);
+        // System.out.println("=====================================================================================================================================");
     
-        // List<Corrida> listCorridaSemMotorista = new ArrayList<>();
-    
-        // List<Corrida> todasCorridas = corridaRepository.findAll();
-    
-        // for (Corrida corrida : todasCorridas) {
-        //     Chamados chamado = corridaService.getChamadoById(corrida.getIdCorrida());
-    
-        //     // Verifica se o chamado NÃO tem motorista associado
-        //     if (chamado.getMotorista() == null) {
-        //         listCorridaSemMotorista.add(corrida);
-        //     }
-        // }
-    
-        // return listCorridaSemMotorista;
+
         return corridaRepository.findAll();
     }
     
@@ -114,7 +105,13 @@ public class CreateChamados {
     public ResponseEntity<String> createNewChamado(@RequestBody Long request) {
 
         Corrida corrida = corridaService.getCorridaById(request);
+        System.out.println("=====================================================================================================================================");
+        System.out.println(corrida.getDestino());
 
+        System.out.println("=====================================================================================================================================");
+    
+
+        Clientes cliente = corridaService.getClienteById(corrida.getIdCliente());
         // Motorista
         Endereco enderecoMotorista = new Endereco("Rua A", 123, "88000000", "Casa", "SC", "Florianópolis");
         enderecoRepository.save(enderecoMotorista);
@@ -124,9 +121,16 @@ public class CreateChamados {
         Veiculos veiculo = new Veiculos("OZW-6777", "F-80", "2025", "Vermelha", "Ferrari");
         veiculosRepository.save(veiculo);
 
-        Chamados newChamado = new Chamados(corrida.getOrigem(),corrida.getDestino(),corrida.getData(), corrida.getTipoServico(),corrida.getIdCliente(), null, 0, 0, null, null, 0, null, null, null);
+        Chamados newChamado = new Chamados(corrida.getOrigem(),corrida.getDestino(),corrida.getData(), corrida.getTipoServico(),corrida.getIdCliente(), 1, 7, "10:57",  "11:07", 10.57, veiculo, motorista,  cliente );
 
         chamadosRepository.save(newChamado);
+
+        System.out.println("=====================================================================================================================================");
+        System.out.println(newChamado);
+
+        System.out.println("=====================================================================================================================================");
+    
+
 
 
         return ResponseEntity.ok("Chamado criado com sucesso!");
