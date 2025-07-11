@@ -1,5 +1,6 @@
 package com.Uber.Uber.Controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,18 +85,30 @@ public class CreateChamados {
     
     @GetMapping("/consultaCorrida")
     public List<Corrida> consultaCorrida() {
-        // System.out.println("=====================================================================================================================================");
-        // System.out.println("                           PASSOU POR AQUI                   corridaRepository.findAll()");
-        // List<Corrida> allCorrida = corridaRepository.findAll();
-        // System.out.println(allCorrida);
-        // System.out.println("=====================================================================================================================================");
+        System.out.println("=====================================================================================================================================");
+        System.out.println("                           PASSOU POR AQUI                   corridaRepository.findAll()");
+        List<Corrida> allCorridasSemChamado = new ArrayList<>();
+        List<Corrida> allCorridas = corridaRepository.findAll();
+        
+        for (Corrida corrida : allCorridas) {
+            try {
+                System.out.println(corrida.getIdCorrida());
+                Chamados chamado = corridaService.getChamadoById(corrida.getIdCorrida());
     
-
-        return corridaRepository.findAll();
+                // Verifica se o chamado é null
+                if (chamado == null) {
+                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxx=====================================xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                    allCorridasSemChamado.add(corrida);
+                } else {
+                    System.out.println(chamado.getIdCorrida());
+                }
+            } catch (Exception e) {
+                e.printStackTrace(); // Registra a exceção
+            }
+        }
+        return allCorridasSemChamado;
     }
     
-    
-
 
     
 
@@ -105,13 +118,14 @@ public class CreateChamados {
     public ResponseEntity<String> createNewChamado(@RequestBody Long request) {
 
         Corrida corrida = corridaService.getCorridaById(request);
-        System.out.println("=====================================================================================================================================");
-        System.out.println(corrida.getDestino());
-
-        System.out.println("=====================================================================================================================================");
-    
-
         Clientes cliente = corridaService.getClienteById(corrida.getIdCliente());
+        // System.out.println("=====================================================================================================================================");
+        // System.out.println(corrida.getOrigem());
+        // System.out.println(cliente.getCpfRg());
+
+        // System.out.println("=====================================================================================================================================");
+    
+   
         // Motorista
         Endereco enderecoMotorista = new Endereco("Rua A", 123, "88000000", "Casa", "SC", "Florianópolis");
         enderecoRepository.save(enderecoMotorista);
@@ -124,14 +138,6 @@ public class CreateChamados {
         Chamados newChamado = new Chamados(corrida.getOrigem(),corrida.getDestino(),corrida.getData(), corrida.getTipoServico(),corrida.getIdCliente(), 1, 7, "10:57",  "11:07", 10.57, veiculo, motorista,  cliente );
 
         chamadosRepository.save(newChamado);
-
-        System.out.println("=====================================================================================================================================");
-        System.out.println(newChamado);
-
-        System.out.println("=====================================================================================================================================");
-    
-
-
 
         return ResponseEntity.ok("Chamado criado com sucesso!");
     }

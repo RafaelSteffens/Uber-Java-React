@@ -8,7 +8,9 @@ public class Clientes extends Pessoa {
     private String cpfRg;
 
     // public Clientes() {}
-
+    public Clientes() {
+        super("Nome Padrão", "Telefone Padrão", new Endereco()); // Chama o construtor da classe pai
+    }
     public Clientes(String nome, String telefone, Endereco endereco, String cpfRg) {
         super(nome, telefone, endereco);
         this.cpfRg = cpfRg;
