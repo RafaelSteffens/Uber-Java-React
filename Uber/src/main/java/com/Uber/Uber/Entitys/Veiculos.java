@@ -18,6 +18,8 @@ public class Veiculos {
     private String Marca;
 
 
+
+    public Veiculos () {}
     
     public Veiculos(String placa, String modelo, String ano, String cor, String marca) {
         Placa = placa;

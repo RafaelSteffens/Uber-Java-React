@@ -20,7 +20,7 @@ public class Chamados extends Corrida{
     @ManyToOne
     private Clientes cliente;
 
-    // public Chamados() { }
+    public Chamados() { }
 
     public Chamados(String origem, String destino, String data, String tipoServico, Long idCliente,
                     double kmInicial, double kmFinal,

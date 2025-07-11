@@ -1,11 +1,13 @@
 package com.Uber.Uber.Services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Uber.Uber.Entitys.Chamados;
-import com.Uber.Uber.Entitys.Corrida;
 import com.Uber.Uber.Entitys.Clientes;
+import com.Uber.Uber.Entitys.Corrida;
 import com.Uber.Uber.Repositorys.ChamadosRepository;
 import com.Uber.Uber.Repositorys.ClientesRepository;
 import com.Uber.Uber.Repositorys.CorridaRepository;
@@ -24,16 +26,17 @@ public class CorridaService {
 
     public Corrida getCorridaById(Long id) {
         return corridaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Corrida não encontrada com o ID: " + id));
+                .orElseThrow(null);
     }
 
     public Chamados getChamadoById(Long id) {
-        return chamadosRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Corrida não encontrada com o ID: " + id));
+        Optional<Chamados> optionalChamado = chamadosRepository.findById(id);
+        return optionalChamado.orElse(null); // Retorna o objeto Chamados se presente, ou null se não estiver
     }
+    
 
     public Clientes getClienteById(Long id) {
         return clientesRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Corrida não encontrada com o ID: " + id));
+                .orElseThrow(null);
     }
 }
