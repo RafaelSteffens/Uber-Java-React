@@ -22,11 +22,11 @@ public class Chamados extends Corrida{
 
     public Chamados() { }
 
-    public Chamados(String origem, String destino, String data, String tipoServico, Long idCliente,
+    public Chamados(String origem, String destino, String data, String tipoServico, Long idCliente, boolean semMotorista,
                     double kmInicial, double kmFinal,
                     String hrInicial, String hrFinal, double valorCorrida,
                     Veiculos veiculo, Motoristas motorista, Clientes cliente) {
-        super(origem, destino, data, tipoServico, idCliente);
+        super(origem, destino, data, tipoServico, idCliente, semMotorista);
         this.kmInicial = kmInicial;
         this.kmFinal = kmFinal;
         this.hrInicial = hrInicial;

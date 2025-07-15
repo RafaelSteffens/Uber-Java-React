@@ -23,19 +23,27 @@ public class Corrida {
     private String data;
     private String tipoServico;
     private Long idCliente;
+    private boolean semMotorista = true;
 
     public Corrida() { }
 
-    public Corrida(String origem, String destino, String data, String tipoServico, Long idCliente) {
+    public Corrida(String origem, String destino, String data, String tipoServico, Long idCliente, boolean semMotorista) {
         this.origem = origem;
         this.destino = destino;
         this.data = data;
         this.tipoServico = tipoServico;
         this.idCliente = idCliente;
+        this.semMotorista = semMotorista;
     }
 
     
+    public boolean isSemMotorista() {
+        return semMotorista;
+    }
 
+    public void setSemMotorista(boolean semMotorista) {
+        this.semMotorista = semMotorista;
+    }
 
     public Long getIdCorrida() {
         return idCorrida;
