@@ -17,7 +17,9 @@ public class Motoristas extends Pessoa {
     public void setCNH(String cNH) {
         CNH = cNH;
     }
-    // public Motoristas() {}
+    public Motoristas() {
+        super("Nome Padrão", "Telefone Padrão", new Endereco());
+    }
 
     public Motoristas (String nome, String telefone, Endereco endereco, String CNH) {
         super(nome, telefone, endereco);
