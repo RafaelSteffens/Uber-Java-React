@@ -64,9 +64,13 @@ public class CreateChamados {
     @PostMapping("/createUser")
     public ResponseEntity<String> formRegisterUser (@RequestBody Clientes request) {
 
-       // Clientes newCliente = new Clientes(request.getNome(), request.getTelefone(), request.getEndereco(), request.getCpfRg());
 
         clientesRepository.save(request);
+
+//         Clientes newCliente = new Clientes(request.getNome(), request.getTelefone(), request.getEndereco(), request.getCpfRg());
+
+//         clientesRepository.save(newCliente);
+
 
         
         return ResponseEntity.ok("Cliente Cadastrado com sucesso");
